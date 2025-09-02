@@ -81,8 +81,8 @@ void loop() {
       return;
     }
 
-    Serial.println(t);
-    Serial.println(h);
+      Serial.println(t);
+      Serial.println(h);
 
     // Envio de dados para o ThingSpeak
     HTTPClient http;
@@ -92,4 +92,25 @@ void loop() {
 
     int httpCode = http.GET();
     if (httpCode > 0) {
-      String payload = http.getString(); // Resp
+      String payload = http.getString(); // Resposta da requisição HTTP
+      Serial.println("Dados enviados ao ThingSpeak.");
+      Serial.print("Código HTTP: ");
+      Serial.println(httpCode);
+      Serial.println("Resposta: ");
+      Serial.println(payload);
+    } else {
+      Serial.print("Erro ao enviar dados. Código HTTP: ");
+      Serial.println(httpCode);
+    }
+    
+    http.end();
+  } else {
+    Serial.println("WiFi não conectado. Tentando reconectar...");
+  }
+  
+  // Espera 15 segundos para enviar a requisição novamente
+  delay(2500);
+}
+
+VÍDEO AQUI:
+https://youtube.com/shorts/hkXoIgoQrYY?si=F85nkLVebK6U3Y-V
