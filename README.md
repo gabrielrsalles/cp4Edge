@@ -2,6 +2,13 @@
 
 Este projeto utiliza um ESP32 para capturar dados de um sensor de temperatura e umidade DHT22, além de ler a posição de um potenciômetro. Os dados são enviados para o ThingSpeak para monitoramento remoto.
 
+## Integrantes
+
+- **Gabriel Ribeiro** - 563584
+- **Felipe Viana** - 565341
+- **Joan Ferreira** - 562913
+- **Felipe Bonilha** - 562356
+
 ## Componentes
 
 - **ESP32**: Microcontrolador que gerencia o projeto.
@@ -85,22 +92,4 @@ void loop() {
 
     int httpCode = http.GET();
     if (httpCode > 0) {
-      String payload = http.getString(); // Resposta da requisição HTTP
-      Serial.println("Dados enviados ao ThingSpeak.");
-      Serial.print("Código HTTP: ");
-      Serial.println(httpCode);
-      Serial.println("Resposta: ");
-      Serial.println(payload);
-    } else {
-      Serial.print("Erro ao enviar dados. Código HTTP: ");
-      Serial.println(httpCode);
-    }
-    
-    http.end();
-  } else {
-    Serial.println("WiFi não conectado. Tentando reconectar...");
-  }
-  
-  // Espera 15 segundos para enviar a requisição novamente
-  delay(2500);
-}
+      String payload = http.getString(); // Resp
